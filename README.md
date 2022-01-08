@@ -21,10 +21,11 @@ Import the package into your project using,
 
 Initialise the constructor using,
 
-`const assetController = new safleAssetController.AssetController({ userAddress, rpcURL });` 
+`const assetController = new safleAssetController.AssetController({ userAddress, rpcURL, chain });` 
 
 * `userAddress` - User Public Address
 * `rpcURL` - Web3 RPC provider URL
+* `chain` - name of blockchain(ethereum, polygon supported for now)
 
 > Methods
 
