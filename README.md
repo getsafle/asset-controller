@@ -25,7 +25,7 @@ Initialise the constructor using,
 
 * `userAddress` - User Public Address
 * `rpcURL` - Web3 RPC provider URL
-* `chain` - name of blockchain(ethereum, polygon supported for now)
+* `chain` - name of blockchain
 
 > Methods
 
