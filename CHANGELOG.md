@@ -13,3 +13,7 @@
 ### 1.0.3 (2022-01-08)
 
 * Updated package to get user's tokens on polygon chain
+
+### 1.0.4 (2022-01-12)
+
+* Updated package to implement dynamic chain selection to get user assets
