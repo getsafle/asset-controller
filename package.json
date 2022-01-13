@@ -1,7 +1,7 @@
 {
   "name": "@getsafle/asset-controller",
-  "version": "1.0.2",
-  "description": "",
+  "version": "1.0.3",
+  "description": "This controller detects tokens for a user and returns token balances.",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,11 +10,18 @@
     "type": "git",
     "url": "https://github.com/getsafle/asset-controller"
   },
-  "author": "",
+  "author": "safle",
+  "contributors": [
+    {
+      "name": "Shubham",
+      "email": "shubham@getsafle.com"
+    }
+  ],
   "license": "ISC",
   "homepage": "https://github.com/getsafle/asset-controller/blob/master/README.md",
   "dependencies": {
     "@metamask/contract-metadata": "^1.24.0",
+    "axios": "^0.24.0",
     "web3": "^1.2.1"
   }
 }
