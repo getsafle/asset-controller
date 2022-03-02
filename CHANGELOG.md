@@ -17,3 +17,7 @@
 ### 1.0.4 (2022-01-12)
 
 * Updated package to implement dynamic chain selection to get user assets
+
+### 1.0.5 (2022-03-02)
+
+* Updated controller to accept public address as function parameter.
