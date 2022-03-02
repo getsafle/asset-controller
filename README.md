@@ -21,9 +21,8 @@ Import the package into your project using,
 
 Initialise the constructor using,
 
-`const assetController = new safleAssetController.AssetController({ userAddress, rpcURL, chain });` 
+`const assetController = new safleAssetController.AssetController({ rpcURL, chain });` 
 
-* `userAddress` - User Public Address
 * `rpcURL` - Web3 RPC provider URL
 * `chain` - name of blockchain
 
@@ -31,7 +30,9 @@ Initialise the constructor using,
 
 Detect user tokens
 
-`const tokenBalance = await assetController.detectTokens(tokenType);`
+`const tokenBalance = await assetController.detectTokens({ userAddress, tokenType });`
 
+* `userAddress` - User Public Address
 * `tokenType` - optional parameter - valid values- erc20/erc721
+
 

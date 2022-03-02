@@ -4,14 +4,13 @@ const { CONTRACT_EXECUTION_ERROR, INVALID_TOKEN_TYPE, INVALID_CHAIN_SELECTED } =
 const helper = require('./utils/helper');
 
 class AssetController {
-    constructor({ rpcURL, userAddress, chain }) {
-        this.userAddress = userAddress,
+    constructor({ rpcURL, chain }) {
         this.rpcURL = rpcURL;
         this.chain = chain;
         this.web3 = new Web3(new Web3.providers.HttpProvider(this.rpcURL));
     }
 
-    async detectTokens(tokenType) {
+    async detectTokens({ tokenType, userAddress }) {
 
         const { error, contracts, SINGLE_CALL_BALANCES_ADDRESS } = await helper.getChainDetails(this.chain);
 
@@ -44,7 +43,7 @@ class AssetController {
         }
         let result;
         try {
-            result = await this.getTokenBalances(tokensToDetect, SINGLE_CALL_BALANCES_ADDRESS);
+            result = await this.getTokenBalances(tokensToDetect, SINGLE_CALL_BALANCES_ADDRESS, userAddress);
 
         } catch (error) {
             return { error };
@@ -66,10 +65,10 @@ class AssetController {
         return tokenBalance;
     }
 
-    async getTokenBalances(tokensToDetect, SINGLE_CALL_BALANCES_ADDRESS) {
+    async getTokenBalances(tokensToDetect, SINGLE_CALL_BALANCES_ADDRESS, userAddress) {
         const ethContract = new this.web3.eth.Contract(SINGLE_CALL_BALANCES_ABI, SINGLE_CALL_BALANCES_ADDRESS);
         try {
-            const balance = await ethContract.methods.balances([this.userAddress], tokensToDetect).call();
+            const balance = await ethContract.methods.balances([userAddress], tokensToDetect).call();
             return balance;
         } catch (error) {
             return { error: CONTRACT_EXECUTION_ERROR };
