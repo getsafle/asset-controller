@@ -36,3 +36,11 @@ Detect user tokens
 * `tokenType` - optional parameter - valid values- erc20/erc721
 
 
+Get list of chains on which a token exists
+
+`const chains = await assetController.getChains(tokenSymbol);`
+
+* `tokenSymbol` - Token Symbol
+
+
+

@@ -21,3 +21,7 @@
 ### 1.0.5 (2022-03-02)
 
 * Updated controller to accept public address as function parameter.
+
+### 1.0.6 (2022-03-03)
+
+* Added method to get list of chains on which a token exists
