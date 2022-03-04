@@ -2,6 +2,7 @@ const Web3 = require('web3');
 const SINGLE_CALL_BALANCES_ABI = require('./constants/abi/single-call-balance-checker-abi');
 const { CONTRACT_EXECUTION_ERROR, INVALID_TOKEN_TYPE, INVALID_CHAIN_SELECTED } =require('./constants/responses') 
 const helper = require('./utils/helper');
+const config = require('./config');
 
 class AssetController {
     constructor({ rpcURL, chain }) {
@@ -73,6 +74,21 @@ class AssetController {
         } catch (error) {
             return { error: CONTRACT_EXECUTION_ERROR };
         }
+    }
+
+    async getChains(symbol){
+        const { response } = await helper.getRequest({ url: config.CONTRACT_DATA_URL });
+        const { chains } = response;
+        const supportedChains = [];
+        for (const chain in chains) {
+           let contractMap = chains[chain].CONTRACT_MAP;
+              for (const contractAddress in contractMap) {
+                  if (contractMap[contractAddress].symbol === symbol) {
+                    supportedChains.push(chain);
+                  }
+              }
+       };
+       return supportedChains;
     }
 }
 

@@ -27,5 +27,5 @@ const getRequest = async ({ url }) => {
         return { error: [{ name: 'server', message: 'There is some issue, Please try after some time' }] };
     }
 };
-module.exports = { getChainDetails };
+module.exports = { getChainDetails, getRequest };
 
