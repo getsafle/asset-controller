@@ -25,3 +25,7 @@
 ### 1.0.6 (2022-03-03)
 
 * Added method to get list of chains on which a token exists
+
+### 1.0.7 (2022-03-29)
+
+* Updated URL to get token/chain list
