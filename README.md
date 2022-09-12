@@ -1,46 +1,50 @@
-# **Safle Asset Controller**
+# Safle Asset Controller
 
-Safle Asset Controller SDK
+This SDK is used to detect the tokens and their balances in a given user's public address.
 
+## Installation
 
-## **Installation and Usage**
+To install this SDK,
 
-> Installation
+```sh
+npm install --save @getsafle/asset-controller
+```
 
-Install the package by running the command,
+## Initialization
 
-`npm install @getsafle/asset-controller`
+Initialize the constructor,
 
-Import the package into your project using,
+```js
+const safleAssetController = require('@getsafle/asset-controller');
 
-`const safleAssetController = require('@getsafle/asset-controller');`
+const assetController = new safleAssetController.AssetController({ rpcURL, chain });
+```
 
-## **Asset Controller**
+<br>
 
-> Initialising
+> Detect Tokens
 
-Initialise the constructor using,
+<br>
 
-`const assetController = new safleAssetController.AssetController({ rpcURL, chain });` 
+This function will detect and return the list of all the tokens in the user's public address.
 
-* `rpcURL` - Web3 RPC provider URL
-* `chain` - name of blockchain
-
-> Methods
-
-Detect user tokens
-
-`const tokenBalance = await assetController.detectTokens({ userAddress, tokenType });`
+```js
+const tokenBalance = await assetController.detectTokens({ userAddress, tokenType });
+```
 
 * `userAddress` - User Public Address
 * `tokenType` - optional parameter - valid values- erc20/erc721
 
+<br>
 
-Get list of chains on which a token exists
+> Get list of chains on which a token exists
 
-`const chains = await assetController.getChains(tokenSymbol);`
+<br>
+
+This function will return the list of all the chains which a particular token is supported
+
+```js
+const chains = await assetController.getChains(tokenSymbol);
+```
 
 * `tokenSymbol` - Token Symbol
-
-
-
