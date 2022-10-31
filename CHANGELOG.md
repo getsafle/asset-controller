@@ -29,3 +29,7 @@
 ### 1.0.7 (2022-03-29)
 
 * Updated URL to get token/chain list
+
+### 1.0.8 (2022-09-12)
+
+* Updated the README file with the latest functional & non-functional documentation.
