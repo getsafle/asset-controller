@@ -77,19 +77,34 @@ class AssetController {
     }
 
     async getChains(symbol){
-        const { response } = await helper.getRequest({ url: config.CONTRACT_DATA_URL });
-        const { chains } = response;
+        let output;
+
+        const { response, error } = await helper.getRequest({ url: config.CONTRACT_DATA_URL });
+
+        if (error) {
+            const { response } = await helper.getRequest({ url: config.FALLBACK_ASSETS_API });
+
+            output = response;
+        } else {
+            output = response;
+        }
+
+        const { chains } = output;
+
         const supportedChains = [];
+
         for (const chain in chains) {
-           let contractMap = chains[chain].CONTRACT_MAP;
-              for (const contractAddress in contractMap) {
-                  if (contractMap[contractAddress].symbol === symbol) {
+            let contractMap = chains[chain].CONTRACT_MAP;
+                for (const contractAddress in contractMap) {
+                    if (contractMap[contractAddress].symbol === symbol) {
                     supportedChains.push(chain);
-                  }
-              }
-       };
-       return supportedChains;
+                    }
+                }
+        };
+
+        return supportedChains;
     }
+
 }
 
 module.exports = { AssetController: AssetController }
