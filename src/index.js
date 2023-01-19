@@ -95,11 +95,14 @@ class AssetController {
 
         for (const chain in chains) {
             let contractMap = chains[chain].CONTRACT_MAP;
-                for (const contractAddress in contractMap) {
-                    if (contractMap[contractAddress].symbol === symbol) {
-                    supportedChains.push(chain);
-                    }
-                }
+               for (const contractAddress in contractMap) {
+                   if (contractMap[contractAddress].symbol === symbol) {
+                     supportedChains.push(chain);
+                   }
+                 }
+                   if(chains[chain].COIN.symbol === symbol){
+                     supportedChains.push(chain);
+               }
         };
 
         return supportedChains;

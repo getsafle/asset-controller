@@ -37,3 +37,6 @@
 ### 1.0.9 (2022-12-16)
 
 * Added a fallback API to get the list of assets
+
+### 1.0.10 (2023-01-19)
+* Updated getChains() method to return chain name if the input symbol is a native coin
