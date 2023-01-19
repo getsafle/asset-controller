@@ -92,7 +92,7 @@ class AssetController {
         const { chains } = output;
 
         const supportedChains = [];
-
+        symbol = symbol.toUpperCase();
         for (const chain in chains) {
             let contractMap = chains[chain].CONTRACT_MAP;
                for (const contractAddress in contractMap) {
