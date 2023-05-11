@@ -40,3 +40,6 @@
 
 ### 1.0.10 (2023-01-19)
 * Updated getChains() method to return chain name if the input symbol is a native coin
+
+### 1.0.11 (2023-05-11)
+* Implemented DOMPurify to sanitize the token names before returning them

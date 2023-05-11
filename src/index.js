@@ -3,6 +3,11 @@ const SINGLE_CALL_BALANCES_ABI = require('./constants/abi/single-call-balance-ch
 const { CONTRACT_EXECUTION_ERROR, INVALID_TOKEN_TYPE, INVALID_CHAIN_SELECTED } =require('./constants/responses') 
 const helper = require('./utils/helper');
 const config = require('./config');
+const createDOMPurify = require('dompurify');
+const { JSDOM } = require('jsdom');
+
+const window = new JSDOM('').window;
+const DOMPurify = createDOMPurify(window);
 
 class AssetController {
     constructor({ rpcURL, chain }) {
@@ -53,16 +58,16 @@ class AssetController {
         tokensToDetect.forEach((tokenAddress, index) => {
             let balance = result[index];
             if (balance && balance != 0) {
-                tokenBalance.push({
-                    balance,
-                    tokenAddress: tokenAddress,
-                    symbol: contracts[tokenAddress].symbol,
-                    decimal: contracts[tokenAddress].decimals,
-                    erc20: contracts[tokenAddress].erc20,
-                    erc721: contracts[tokenAddress].erc721,
-                });
+            tokenBalance.push({
+            balance,
+            tokenAddress: tokenAddress,
+            symbol: DOMPurify.sanitize(contracts[tokenAddress].symbol),
+            decimal: contracts[tokenAddress].decimals,
+            erc20: contracts[tokenAddress].erc20,
+            erc721: contracts[tokenAddress].erc721,
+            });
             }
-        });
+            });
         return tokenBalance;
     }
 
