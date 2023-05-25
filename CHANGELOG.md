@@ -43,3 +43,6 @@
 
 ### 1.0.11 (2023-05-11)
 * Implemented DOMPurify to sanitize the token names before returning them
+
+### 1.0.12 (2023-05-25)
+* Updated metadata URL's
